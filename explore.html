@@ -472,16 +472,19 @@
 
   // The segment you're filed into + its rough market value, per step.
   // Aligned to SCENES order (the finale, last, has no entry).
+  // Illustrative per-day aggregate value each segment adds (financial highest,
+  // but realistic relative ordering). NOT per-impression.
   var STORY_META = [
-    ["Cross-app identity · one Google ID", 0.004],
-    ["In-market: sleep &amp; wellness · high intent", 0.012],
-    ["Premium-device spender · ready to buy", 0.030],
-    ["Cash-flow: stretched · credit-seeker", 0.180],
-    ["Watch-time mood: fatigue / self-improvement", 0.008],
-    ["Off-app retarget · comparison-primed", 0.010],
-    ["Vulnerable-mood loop · read from your dwell", 0.009],
-    ["Night-owl · payday soft-spot", 0.006]
+    ["Cross-app identity · one Google ID", 0.01],
+    ["In-market: sleep &amp; wellness · high intent", 0.03],
+    ["Premium-device spender · ready to buy", 0.05],
+    ["Cash-flow: stretched · credit-seeker", 0.08],
+    ["Watch-time mood: fatigue / self-improvement", 0.02],
+    ["Off-app retarget · comparison-primed", 0.03],
+    ["Vulnerable-mood loop · read from your dwell", 0.02],
+    ["Night-owl · payday soft-spot", 0.02]
   ];
+  if(STORY_META.length !== SCENES.length-1) console.warn("STORY_META out of sync with SCENES");
 
   function dossierPanel(){
     var rows = storyState.dossier.length
@@ -511,7 +514,7 @@
         '<span class="dval">≈ $'+storyState.value.toFixed(3)+'</span></div>'+
         storyState.dossier.map(function(s){ return '<div class="dseg">▸ '+s+'</div>'; }).join("")+
         '<div class="dval big">Total fetched today: ≈ $'+storyState.value.toFixed(2)+' — you, sold piecemeal.</div></div>'+
-        '<p class="consequence">Pennies, individually — that\'s the unsettling part. The entire ~$700-billion-a-year digital-ad economy runs on selling each of us for fractions of a cent, billions of times a day. 📸 Screenshot this and see who recognises themselves.</p>'
+        '<p class="consequence">A few cents of you, in a single day — that\'s the unsettling part. Multiply it by every site you touch, every day, and every person alive, and it adds up to a ~$800-billion-a-year industry. 📸 Screenshot this and see who recognises themselves.</p>'
       : '';
     return segs +
       '<div class="close">No name was ever needed. These — lifted straight off your browser minutes ago — were plenty:</div>'+
