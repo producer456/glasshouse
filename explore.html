@@ -399,6 +399,16 @@
       ]
     },
     {
+      tag:"Your bank — your spending, sold back to you",
+      body:function(p){ return "You tap your card all day, and every swipe is a near-perfect record of your life — where you go, what you eat, who you pay, when money's tight. Your bank can report it to the credit bureaus (Experian, Equifax, TransUnion), and banks now run their <em>own</em> ad networks: Chase Media Solutions and PayPal Ads turn what you buy into ad-targeting segments sold straight to brands."; },
+      chips:function(p){ return [["your statement", "where · what · who · when"], ["new: bank ad networks", "Chase, PayPal"]]; },
+      q:"The morning after a big purchase, a pre-approved “you deserve it” loan offer lands. You:",
+      a:[
+        {label:"Consider it", c:function(p){ return "The timing isn't luck — your cash-flow dip was visible. The offer (and its rate) is tuned to how stretched you look."; }},
+        {label:"Ignore it", c:function(p){ return "Still logged. “Declined a credit offer” is its own segment — used to time the next, better-disguised one."; }}
+      ]
+    },
+    {
       tag:"YouTube — the watch-time machine",
       body:function(p){ return "After dinner you open YouTube — signed in with that same Google identity from this morning, so it already knows the tired/wellness thread. It autoplays one video, then queues <em>“just one more,”</em> each pick chosen to maximize how long you stay, not whether it's true or good for you. Watch-time is the most honest signal you give — more than any click — and it feeds the very same ad auction."+
         (p.fp?" All of it tied to <em>"+esc(p.fp)+"</em>, the signature this page already lifted off your browser.":""); },
@@ -417,6 +427,16 @@
       a:[
         {label:"Save it for later", c:function(p){ return "Saved = strong intent. The product and its pricier cousins now colonize your Explore tab and Stories ads."; }},
         {label:"Mute the account", c:function(p){ return "Muting hides the post, not the profile. Meta keeps the signal; the segment just routes the same ad through a different creator."; }}
+      ]
+    },
+    {
+      tag:"TikTok — it reads the pause",
+      body:function(p){ return "You open TikTok to switch off. You don't like, comment, or follow — but you linger a half-second longer on a couple of “rough day / why am I so tired” clips. That pause is the whole signal; the For You feed needs nothing else, and within minutes it's serving a tight loop on that mood. (In one nonprofit's test, fresh teen accounts were shown self-harm content within minutes this way.) Its pixel on checkout pages also ties what you buy back to what you watch."; },
+      chips:function(p){ return [["the signal", "a half-second pause"], ["likes/follows needed", "none"]]; },
+      q:"An oddly specific “you're not lazy, you're depleted — try this” clip loops back. You:",
+      a:[
+        {label:"Watch it again", c:function(p){ return "A re-watch is a loud signal. The loop tightens and the mood becomes a sellable segment."; }},
+        {label:"Swipe past fast", c:function(p){ return "A fast swipe is data too — it just tries the next variant until one holds you. The pause it's hunting for is involuntary."; }}
       ]
     },
     {
