@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Join the Glasshouse beta</title>
+<meta name="description" content="Enter your PIN and Apple ID to join the Glasshouse TestFlight beta.">
+<style>
+  :root { --bg:#0b0c10; --card:#15171f; --line:#262a36; --ink:#eef0f4; --dim:#9aa0ad; --pink:#ff5d8f; --green:#34d399; }
+  * { box-sizing:border-box; }
+  body { margin:0; font:16px/1.6 -apple-system,system-ui,Segoe UI,Roboto,sans-serif; background:var(--bg); color:var(--ink); }
+  .wrap { max-width:480px; margin:0 auto; padding:60px 22px; }
+  h1 { font-size:30px; margin:0 0 6px; letter-spacing:-.4px; }
+  .sub { color:var(--dim); margin:0 0 26px; }
+  label { display:block; font-size:13px; color:var(--dim); margin:14px 0 6px; }
+  input { width:100%; padding:13px 14px; font-size:16px; color:var(--ink); background:#0e1016; border:1px solid var(--line); border-radius:12px; }
+  input:focus { outline:none; border-color:var(--pink); }
+  button { width:100%; margin-top:22px; background:var(--pink); color:#fff; border:0; font-weight:700; font-size:17px; padding:15px; border-radius:14px; cursor:pointer; }
+  button:disabled { background:#3a3d49; color:#9aa0ad; cursor:default; }
+  .row { display:flex; gap:10px; }
+  .row > div { flex:1; }
+  .msg { margin-top:18px; padding:13px 15px; border-radius:12px; font-size:15px; display:none; }
+  .msg.ok { display:block; background:#0e1a16; border:1px solid #1f3d34; color:var(--green); }
+  .msg.err { display:block; background:#1c1014; border:1px solid #3d1f29; color:var(--pink); }
+  .note { font-size:13px; color:var(--dim); margin-top:22px; }
+  a { color:var(--pink); }
+  .card { background:var(--card); border:1px solid var(--line); border-radius:18px; padding:26px 24px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="card">
+    <h1>Join the beta</h1>
+    <p class="sub">Glasshouse is invite-only. Enter the PIN David gave you, plus the Apple ID you'll use with TestFlight.</p>
+
+    <form id="f" autocomplete="on">
+      <label for="pin">Invite PIN</label>
+      <input id="pin" name="pin" type="text" placeholder="Ask David for it" required>
+
+      <div class="row">
+        <div>
+          <label for="first">First name</label>
+          <input id="first" name="firstName" type="text" autocomplete="given-name" required>
+        </div>
+        <div>
+          <label for="last">Last name</label>
+          <input id="last" name="lastName" type="text" autocomplete="family-name" required>
+        </div>
+      </div>
+
+      <label for="email">Apple ID email</label>
+      <input id="email" name="email" type="email" autocomplete="email" placeholder="the one you use on your iPhone" required>
+
+      <button id="go" type="submit">Add me to the beta</button>
+    </form>
+
+    <div id="msg" class="msg"></div>
+
+    <p class="note">After you're added: install Apple's free <a href="https://apps.apple.com/app/testflight/id899247664" target="_blank" rel="noopener">TestFlight</a> app, then watch for the invite email (or tap the link in it). If the build is still in Apple's first-time review, you'll get in the moment it clears (usually ~a day).</p>
+    <p class="note"><a href="./">← back to Glasshouse</a></p>
+  </div>
+</div>
+
+<script>
+  // Set this to your deployed Cloudflare Worker URL (see tester-signup/DEPLOY.md).
+  const WORKER_URL = "";
+
+  const f = document.getElementById("f");
+  const msg = document.getElementById("msg");
+  const go = document.getElementById("go");
+
+  f.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    msg.className = "msg";
+    if (!WORKER_URL) {
+      show("err", "Signup isn't switched on yet — the form's backend hasn't been deployed. Text David and he'll add you directly.");
+      return;
+    }
+    go.disabled = true; go.textContent = "Adding you…";
+    try {
+      const r = await fetch(WORKER_URL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          pin: f.pin.value, firstName: f.first.value, lastName: f.last.value, email: f.email.value,
+        }),
+      });
+      const data = await r.json();
+      if (r.ok && data.ok) { show("ok", data.message || "You're in! Check TestFlight."); f.reset(); }
+      else show("err", data.error || "Something went wrong. Try again or text David.");
+    } catch {
+      show("err", "Couldn't reach the server. Check your connection and try again.");
+    } finally {
+      go.disabled = false; go.textContent = "Add me to the beta";
+    }
+  });
+
+  function show(kind, text) { msg.className = "msg " + kind; msg.textContent = text; }
+</script>
+</body>
+</html>

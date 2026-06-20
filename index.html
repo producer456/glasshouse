@@ -98,6 +98,26 @@
     <p class="lead">The flip side: the same kind of AI, pointed at helping people instead of profiling them — real projects to admire (Be My Eyes, Flood Hub, iNaturalist, Tarjimly…) and hands-on links to start <em>building</em> something good yourself (fast.ai, Kaggle, Omdena).</p>
   </section>
 
+  <section>
+    <h2>How it was built — and how you could build one too</h2>
+    <p class="lead">Glasshouse was made by <strong>one person</strong>, with no server, no data collection, and no big budget — using tools that are free and already on every recent iPhone. If it can be built to <em>protect</em> people, you can build something good too. Here's the whole recipe:</p>
+    <ul>
+      <li><strong>The app:</strong> plain <strong>SwiftUI</strong> (Apple's free UI framework) — the same thing every iPhone app is built with.</li>
+      <li><strong>The AI:</strong> Apple's built-in <strong>on-device Foundation Models</strong> (iOS 26). No model to download, no API bill, no server — the AI runs on the phone's own chip, which is exactly why nothing has to leave the device.</li>
+      <li><strong>The data:</strong> standard Apple frameworks any app can use — PhotoKit, EventKit (calendar), Contacts, CoreLocation, HealthKit, CoreMotion — all read <strong>locally</strong>.</li>
+      <li><strong>The blocker:</strong> a <strong>Safari content blocker</strong> extension (a simple bundled list of tracker domains).</li>
+      <li><strong>The privacy guarantee:</strong> the design choice to keep the AI on-device and ship with <strong>no network</strong> — so there's literally nowhere for your data to go.</li>
+    </ul>
+    <h3>Want to build your own?</h3>
+    <p class="lead">Start here — all free, all beginner-friendly:</p>
+    <ul>
+      <li><strong>Learn SwiftUI:</strong> <a href="https://www.hackingwithswift.com/100/swiftui" target="_blank" rel="noopener">100 Days of SwiftUI</a> (free) and Apple's <a href="https://developer.apple.com/tutorials/swiftui" target="_blank" rel="noopener">SwiftUI tutorials</a>.</li>
+      <li><strong>Use on-device AI:</strong> Apple's <a href="https://developer.apple.com/documentation/foundationmodels" target="_blank" rel="noopener">Foundation Models</a> framework — the same on-device model this app uses.</li>
+      <li><strong>Point AI at good problems:</strong> learn the skills with <a href="https://www.fast.ai" target="_blank" rel="noopener">fast.ai</a> / <a href="https://www.kaggle.com/learn" target="_blank" rel="noopener">Kaggle</a>, then build for impact with <a href="https://www.omdena.com" target="_blank" rel="noopener">Omdena</a> or <a href="https://www.drivendata.org" target="_blank" rel="noopener">DrivenData</a>.</li>
+    </ul>
+    <p class="note">The point of this whole app: the same technology used to profile and nudge you is free, on your phone, and could just as easily be used to help. Pick a problem you care about and start small.</p>
+  </section>
+
   <section class="priv">
     <h2>How it affects your privacy</h2>
     <p class="lead"><strong>It doesn't expose you — it shows you.</strong> Installing Glasshouse does not send your data anywhere. It reads your data locally to analyze it, and the analysis happens on your phone's own chip. There is no account, no server, no tracking.</p>
