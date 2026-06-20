@@ -67,6 +67,8 @@
   .dseg{font:12.5px/1.55 -apple-system,system-ui,sans-serif; color:#dde6ef}
   .dseg.dim{color:var(--muted)}
   .dseg b{color:#fff}
+  .scene-art{display:flex; justify-content:center; margin:2px 0 14px}
+  .scene-art svg{width:160px; height:auto; max-width:62%; opacity:.95}
   .card.finale{border-color:rgba(255,122,133,.3);
     background:linear-gradient(180deg,rgba(255,122,133,.06),transparent)}
   button{
@@ -497,6 +499,23 @@
   ];
   if(STORY_META.length !== SCENES.length-1) console.warn("STORY_META out of sync with SCENES");
 
+  // Inline line-art per scene (no network — drawn in SVG). Keyed by a unique
+  // word in each scene's tag so it survives reordering.
+  var SVG_OPEN='<svg viewBox="0 0 160 100" width="160" height="100" fill="none" stroke="#5ad1c5" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">';
+  var ART = {
+    "master key": SVG_OPEN+'<circle cx="32" cy="50" r="14"/><path d="M46 50 H92"/><path d="M78 50 v12 M92 50 v10"/><rect x="104" y="22" width="20" height="20" rx="4" stroke="#93a2b3"/><rect x="130" y="22" width="20" height="20" rx="4" stroke="#93a2b3"/><rect x="104" y="48" width="20" height="20" rx="4" stroke="#93a2b3"/><rect x="130" y="48" width="20" height="20" rx="4" stroke="#93a2b3"/></svg>',
+    "a worry": SVG_OPEN+'<rect x="18" y="40" width="86" height="22" rx="11" stroke="#93a2b3"/><path d="M30 51 h48" stroke="#93a2b3" stroke-width="2"/><circle cx="120" cy="42" r="16"/><path d="M132 54 L148 70"/></svg>',
+    "Amazon": SVG_OPEN+'<path d="M40 42 L80 28 L120 42 L80 56 Z"/><path d="M40 42 V80 L80 94 V56"/><path d="M120 42 V80 L80 94"/><path d="M64 70 q16 9 32 0" stroke="#93a2b3"/></svg>',
+    "bank": SVG_OPEN+'<rect x="24" y="28" width="112" height="66" rx="9"/><rect x="38" y="46" width="22" height="16" rx="3" stroke="#93a2b3"/><path d="M24 76 h112" stroke="#93a2b3"/><path d="M104 44 h20 M104 56 h20" stroke="#93a2b3" stroke-width="2"/></svg>',
+    "YouTube": SVG_OPEN+'<rect x="26" y="26" width="80" height="52" rx="9"/><path d="M58 40 L80 52 L58 64 Z" fill="#5ad1c5" stroke="none"/><path d="M118 36 h26 M118 50 h26 M118 64 h26" stroke="#93a2b3"/></svg>',
+    "Instagram": SVG_OPEN+'<rect x="44" y="20" width="72" height="72" rx="18"/><circle cx="80" cy="56" r="18"/><circle cx="104" cy="34" r="3.5" fill="#5ad1c5" stroke="none"/><path d="M132 80 c0 -7 -10 -10 -10 -2 0 -8 -10 -5 -10 2 0 6 10 12 10 12 0 0 10 -6 10 -12 Z" stroke="#93a2b3"/></svg>',
+    "TikTok": SVG_OPEN+'<rect x="56" y="14" width="48" height="78" rx="9"/><circle cx="78" cy="64" r="7"/><path d="M85 64 V36 l16 -5"/><path d="M101 31 a6 6 0 0 0 8 5" stroke="#93a2b3"/></svg>',
+    "Social": SVG_OPEN+'<path d="M118 22 a20 20 0 1 0 19 31 a16 16 0 0 1 -19 -31 Z" stroke="#93a2b3"/><rect x="22" y="30" width="72" height="14" rx="4"/><rect x="22" y="52" width="72" height="14" rx="4" stroke="#93a2b3"/><rect x="22" y="74" width="72" height="14" rx="4" stroke="#93a2b3"/></svg>',
+    "behaviour": SVG_OPEN+'<rect x="26" y="20" width="108" height="66" rx="9"/><circle cx="54" cy="44" r="12"/><path d="M40 70 a14 14 0 0 1 28 0"/><path d="M82 38 h42 M82 50 h42 M82 62 h28" stroke="#93a2b3"/><path d="M30 88 h100" stroke="#5ad1c5" stroke-width="5" stroke-dasharray="2 3"/></svg>'
+  };
+  function artFor(tag){ for(var k in ART){ if(tag.indexOf(k)>-1) return ART[k]; } return ""; }
+  function sceneArt(tag){ var a=artFor(tag); return a ? '<div class="scene-art">'+a+'</div>' : ""; }
+
   function dossierPanel(){
     var rows = storyState.dossier.length
       ? storyState.dossier.map(function(s){ return '<div class="dseg">▸ '+s+'</div>'; }).join("")
@@ -539,7 +558,7 @@
     var crumbs = storyState.moves.length
       ? ' · your moves: '+storyState.moves.map(function(m){return '<span class="crumb">'+esc(m)+'</span>';}).join(" ") : "";
     var h = (s.finale ? '' : dossierPanel()) + '<div class="progress">Scene '+(storyState.step+1)+' of '+SCENES.length+crumbs+'</div>';
-    h += '<div class="scene"><span class="tag">'+esc(s.tag)+'</span><p>'+s.body(p)+'</p>'+chipHTML(s.chips?s.chips(p):[])+'</div>';
+    h += '<div class="scene">'+sceneArt(s.tag)+'<span class="tag">'+esc(s.tag)+'</span><p>'+s.body(p)+'</p>'+chipHTML(s.chips?s.chips(p):[])+'</div>';
     if(s.finale){
       h += finaleSummary(p) + '<button class="next" data-story-replay="1">↻ Replay my day</button>';
     } else if(storyState.chosen[storyState.step]==null){
