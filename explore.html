@@ -399,6 +399,27 @@
       ]
     },
     {
+      tag:"YouTube — the watch-time machine",
+      body:function(p){ return "After dinner you open YouTube — signed in with that same Google identity from this morning, so it already knows the tired/wellness thread. It autoplays one video, then queues <em>“just one more,”</em> each pick chosen to maximize how long you stay, not whether it's true or good for you. Watch-time is the most honest signal you give — more than any click — and it feeds the very same ad auction."+
+        (p.fp?" All of it tied to <em>"+esc(p.fp)+"</em>, the signature this page already lifted off your browser.":""); },
+      chips:function(p){ return [["recommended in", firstLang(p)], ["watch-time", "every second you linger"]]; },
+      q:"Autoplay cues up a 2-hour “why you're always tired” rabbit hole. You:",
+      a:[
+        {label:"Let it autoplay", c:function(p){ return "Watch-time win. It learns this topic and this hour hold you, deepens the rabbit hole, and serves more ads against you the longer you stay."; }},
+        {label:"Close the app", c:function(p){ return "Logged as a drop-off — so it picks a thumbnail tuned to your weak spot and fires a notification later to pull you back."; }}
+      ]
+    },
+    {
+      tag:"Instagram — it followed you here",
+      body:function(p){ return "You open Instagram and the supplement and weighted blanket from earlier are <em>already</em> in your feed and Stories — because Meta's Pixel sat on those shopping pages you browsed and never connected to Instagram. It stitches your off-app browsing to your account even when you're logged out, keyed to <em>"+esc(p.canvas||p.fp)+"</em>. And the feed leans on comparison: Meta's own research found Instagram worsens body image for many teens — that low-level unease keeps you scrolling and primed to buy."; },
+      chips:function(p){ return [["off-app match", p.canvas||p.fp], ["recognized logged-out", "yes"]]; },
+      q:"A “people like you also bought” reel loops. You:",
+      a:[
+        {label:"Save it for later", c:function(p){ return "Saved = strong intent. The product and its pricier cousins now colonize your Explore tab and Stories ads."; }},
+        {label:"Mute the account", c:function(p){ return "Muting hides the post, not the profile. Meta keeps the signal; the segment just routes the same ad through a different creator."; }}
+      ]
+    },
+    {
       tag:"Social — the nudge that rewrites the story",
       body:function(p){ return "By evening your feed re-tunes. Served in "+esc(firstLang(p))+", you linger a beat on "+
         "<em>“morning routines of successful people.”</em> So it serves ten more. The message it lands on — that your tiredness is a "+
