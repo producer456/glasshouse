@@ -115,7 +115,8 @@
   <div class="card">
     <h2>2 · The invisible canvas test</h2>
     <p class="what">Sites can ask your browser to draw a hidden image, then read it back. Tiny differences in your
-    GPU/driver/OS make the result reliably <em>you</em> — a classic cookieless tracking trick. Let's run it:</p>
+    GPU/driver/OS can make the result reliably <em>you</em> — a classic cookieless trick. It works fully in Chrome;
+    <strong>Safari, Firefox and Brave now add noise to defeat it</strong>, so on those you may get a different result each run. Let's see yours:</p>
     <p class="eli5">🧒 <b>Like you're 5:</b> We ask your computer to doodle a tiny picture. It draws it just a little
     differently than everyone else — like handwriting. So the doodle alone whispers "this is you."</p>
     <button data-run="canvas">Run the canvas test on me</button>
@@ -125,8 +126,9 @@
   <!-- 3. WebGL / GPU -->
   <div class="card">
     <h2>3 · Your graphics card is talking</h2>
-    <p class="what">Through WebGL, a page can often read the exact name of your GPU — another strong identifier you
-    never agreed to share. Here's what this page can see:</p>
+    <p class="what">Through WebGL, a page can often read the name of your GPU — another identifier you never agreed
+    to share. <strong>Chrome shows the exact model; Safari reports just "Apple GPU" and Firefox generalizes it</strong>
+    to limit this. Here's what this page can see:</p>
     <p class="eli5">🧒 <b>Like you're 5:</b> Your computer has a part that draws games and videos. When a website asks,
     it shouts its exact brand name across the room — like telling a stranger which toy you own.</p>
     <button data-run="webgl">Reveal my GPU</button>
@@ -136,8 +138,9 @@
   <!-- 4. WebRTC IP leak -->
   <div class="card">
     <h2>4 · The local-network leak (WebRTC)</h2>
-    <p class="what">Even behind a VPN, the WebRTC feature used for video calls can expose your device's local
-    network addresses. Modern browsers mask these as <code>.local</code> names — let's see what yours reveals:</p>
+    <p class="what">The WebRTC feature used for video calls once leaked your device's local network address. <strong>Most
+    current browsers now mask it as a random <code>.local</code> name</strong>, so a raw-IP leak is the uncommon,
+    misconfigured case today (and this only ever exposed your <em>local</em> address, not your public/VPN IP). Let's see what yours shows:</p>
     <p class="eli5">🧒 <b>Like you're 5:</b> Your device has a secret house number on your home network. This trick
     can peek at it through the window — even when you thought the curtains (your VPN) were shut.</p>
     <button data-run="rtc">Check for a WebRTC leak</button>
@@ -298,7 +301,7 @@
           ips.map(function(i){return " · "+esc(i);}).join("\n")+"\n\n"+
           (masked
             ? "These are masked <code>.local</code> names — your browser is protecting your real local IP. Good."
-            : "<span class='bad'>Those look like real local network addresses — exactly the kind of leak a VPN doesn't always stop.</span>"));
+            : "<span class='bad'>Those look like your real local network addresses — your browser isn't masking them (uncommon on up-to-date browsers).</span>"));
       }
     },
     store: function(){
