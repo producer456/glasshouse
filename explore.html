@@ -64,6 +64,14 @@
   .dhead{display:flex; justify-content:space-between; align-items:center; gap:8px; font:600 11px/1 ui-monospace,Menlo,Consolas,monospace; letter-spacing:.06em; color:var(--muted); text-transform:uppercase; margin-bottom:8px}
   .dval{color:var(--warn); font-weight:700; transition:color .2s}
   .dval.big{display:block; margin-top:9px; font-size:14px; color:var(--accent)}
+  .valrows{display:flex; gap:8px; margin-top:11px}
+  .valrows > div{flex:1; text-align:center; background:rgba(255,255,255,.04); border:1px solid var(--glass-brd); border-radius:10px; padding:9px 6px}
+  .valrows span{display:block; font-size:10px; color:var(--muted); text-transform:uppercase; letter-spacing:.04em}
+  .valrows b{display:block; margin-top:3px; font-size:15px; color:var(--accent)}
+  .valrows .hi{background:rgba(90,209,197,.12); border-color:var(--accent)}
+  .valrows .hi b{font-size:18px}
+  .bigcity{margin-top:10px; padding:11px 13px; border-radius:10px; background:rgba(255,207,107,.1); border:1px solid rgba(255,207,107,.4); font-size:13.5px; color:var(--ink)}
+  .bigcity b{color:var(--warn); font-size:16px}
   .dseg{font:12.5px/1.55 -apple-system,system-ui,sans-serif; color:#dde6ef}
   .dseg.dim{color:var(--muted)}
   .dseg b{color:#fff}
@@ -542,8 +550,9 @@
       ? '<div class="dossier final"><div class="dhead"><span>The profile your taps built · '+storyState.dossier.length+' segments</span>'+
         '<span class="dval">≈ $'+storyState.value.toFixed(3)+'</span></div>'+
         storyState.dossier.map(function(s){ return '<div class="dseg">▸ '+s+'</div>'; }).join("")+
-        '<div class="dval big">Total fetched today: ≈ $'+storyState.value.toFixed(2)+' — you, sold piecemeal.</div></div>'+
-        '<p class="consequence">A few cents of you, in a single day — that\'s the unsettling part. Multiply it by every site you touch, every day, and every person alive, and it adds up to a ~$800-billion-a-year industry. 📸 Screenshot this and see who recognises themselves.</p>'
+        '<div class="valrows"><div><span>Today</span><b>≈ $'+storyState.value.toFixed(2)+'</b></div><div><span>×7 · a week</span><b>≈ $'+(storyState.value*7).toFixed(2)+'</b></div><div class="hi"><span>×365 · a year</span><b>≈ $'+(storyState.value*365).toFixed(0)+'</b></div></div></div>'+
+        '<div class="bigcity">Now picture all of <b>San Jose</b> (~1 million people) living the same day: ≈ <b>$'+(storyState.value*365).toFixed(0)+' million a year</b> — from one city, sold on, forever.</div>'+
+        '<p class="consequence">Pennies a day, per person — and even that\'s a <em>floor</em> (industry estimates put one person\'s real value to advertisers near $200+/yr). Scale it to everyone alive and it\'s a ~$800-billion-a-year machine. 📸 Screenshot this and see who recognises themselves.</p>'
       : '';
     return segs +
       '<div class="close">No name was ever needed. These — lifted straight off your browser minutes ago — were plenty:</div>'+
