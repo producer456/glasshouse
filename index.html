@@ -48,6 +48,7 @@
     <!-- Replace href with the real TestFlight public link once the app is uploaded. -->
     <a class="cta" id="download" href="#install">Get Glasshouse →</a>
     <div class="note">Free · iPhone 15 Pro or newer · iOS 26 with Apple Intelligence on</div>
+    <div class="note">No iPhone handy? <a href="explore.html" style="color:var(--pink)">Try the browser version →</a> — see what <em>this</em> browser reveals about you, right now.</div>
   </header>
 
   <section>
@@ -56,6 +57,8 @@
 
     <h3>Part 1 — “How the web tracks you” (interactive)</h3>
     <p class="lead">A hands-on walkthrough that runs the whole ad-tracking machine <strong>twice</strong> — once assuming your ad tracking is <strong>off</strong>, once assuming it's <strong>on</strong> — so you can see exactly what that switch does (and what it doesn't). It covers how they identify you, the split-second auction where you're sold, how it quietly steers your prices and feed, and how AI runs all of it. Every heavy idea ends with an <strong>“Explain it to me like I'm 5”</strong> note.</p>
+    <p style="margin:16px 0 4px"><a href="explore.html" style="display:inline-block;background:var(--blue);color:#06101f;text-decoration:none;font-weight:700;font-size:17px;padding:13px 24px;border-radius:13px">▶ Try this walkthrough live in your browser →</a></p>
+    <p class="note">Runs the same thing on the device you're reading this on — no install, and nothing ever leaves your browser.</p>
 
     <h3>Part 2 — “See what they could get on you”</h3>
     <p class="lead">Then it reads the scraps on your phone — where your photos were taken, what's on your calendar, who's in your contacts — and asks an on-device AI, “what could a data broker infer about this person?” You get a polished, interactive report:</p>
@@ -100,22 +103,24 @@
 
   <section>
     <h2>How it was built — and how you could build one too</h2>
-    <p class="lead">Glasshouse was made by <strong>one person</strong>, with no server, no data collection, and no big budget — using tools that are free and already on every recent iPhone. If it can be built to <em>protect</em> people, you can build something good too. Here's the whole recipe:</p>
+    <p class="lead">Honest version: <strong>I'm not an iOS developer — I don't know Swift.</strong> I built Glasshouse by telling an AI assistant (<strong>Claude</strong>) what I wanted, letting it write the actual code, then testing it and going back and forth until it worked. One person, no server, no data collection, no big budget. That <em>is</em> the point: the barrier to building something good has dropped to having the idea and caring enough to finish it.</p>
+    <p class="lead">What it's made of under the hood — the AI wrote it, I directed and tested it:</p>
     <ul>
-      <li><strong>The app:</strong> plain <strong>SwiftUI</strong> (Apple's free UI framework) — the same thing every iPhone app is built with.</li>
-      <li><strong>The AI:</strong> Apple's built-in <strong>on-device Foundation Models</strong> (iOS 26). No model to download, no API bill, no server — the AI runs on the phone's own chip, which is exactly why nothing has to leave the device.</li>
+      <li><strong>The app:</strong> <strong>SwiftUI</strong> (Apple's free UI framework). I couldn't have written it from scratch; the AI did, and I refined it.</li>
+      <li><strong>The AI inside the app:</strong> Apple's built-in <strong>on-device Foundation Models</strong> (iOS 26). No model to download, no API bill, no server — it runs on the phone's own chip, which is exactly why nothing has to leave the device.</li>
       <li><strong>The data:</strong> standard Apple frameworks any app can use — PhotoKit, EventKit (calendar), Contacts, CoreLocation, HealthKit, CoreMotion — all read <strong>locally</strong>.</li>
       <li><strong>The blocker:</strong> a <strong>Safari content blocker</strong> extension (a simple bundled list of tracker domains).</li>
       <li><strong>The privacy guarantee:</strong> the design choice to keep the AI on-device and ship with <strong>no network</strong> — so there's literally nowhere for your data to go.</li>
     </ul>
-    <h3>Want to build your own?</h3>
-    <p class="lead">Start here — all free, all beginner-friendly:</p>
+    <h3>Want to build your own? You don't need to know how to code.</h3>
+    <p class="lead">I didn't. Here's the actual path — all free or low-cost:</p>
     <ul>
-      <li><strong>Learn SwiftUI:</strong> <a href="https://www.hackingwithswift.com/100/swiftui" target="_blank" rel="noopener">100 Days of SwiftUI</a> (free) and Apple's <a href="https://developer.apple.com/tutorials/swiftui" target="_blank" rel="noopener">SwiftUI tutorials</a>.</li>
+      <li><strong>Build it with AI:</strong> describe your idea to <a href="https://claude.ai" target="_blank" rel="noopener">Claude</a> (or a coding agent like <a href="https://claude.com/claude-code" target="_blank" rel="noopener">Claude Code</a>) and have it write the app — then run it, tell it what's wrong, and iterate. That's the whole method I used.</li>
+      <li><strong>If you want to understand the code too:</strong> <a href="https://www.hackingwithswift.com/100/swiftui" target="_blank" rel="noopener">100 Days of SwiftUI</a> (free) and Apple's <a href="https://developer.apple.com/tutorials/swiftui" target="_blank" rel="noopener">SwiftUI tutorials</a> — optional, not required.</li>
       <li><strong>Use on-device AI:</strong> Apple's <a href="https://developer.apple.com/documentation/foundationmodels" target="_blank" rel="noopener">Foundation Models</a> framework — the same on-device model this app uses.</li>
-      <li><strong>Point AI at good problems:</strong> learn the skills with <a href="https://www.fast.ai" target="_blank" rel="noopener">fast.ai</a> / <a href="https://www.kaggle.com/learn" target="_blank" rel="noopener">Kaggle</a>, then build for impact with <a href="https://www.omdena.com" target="_blank" rel="noopener">Omdena</a> or <a href="https://www.drivendata.org" target="_blank" rel="noopener">DrivenData</a>.</li>
+      <li><strong>Point AI at good problems:</strong> <a href="https://www.fast.ai" target="_blank" rel="noopener">fast.ai</a> / <a href="https://www.kaggle.com/learn" target="_blank" rel="noopener">Kaggle</a>, then build for impact with <a href="https://www.omdena.com" target="_blank" rel="noopener">Omdena</a> or <a href="https://www.drivendata.org" target="_blank" rel="noopener">DrivenData</a>.</li>
     </ul>
-    <p class="note">The point of this whole app: the same technology used to profile and nudge you is free, on your phone, and could just as easily be used to help. Pick a problem you care about and start small.</p>
+    <p class="note">The real point: the same technology used to profile and nudge you is free, on your phone, and — with AI doing the heavy lifting — buildable by someone who isn't a programmer. Pick a problem you care about and start small.</p>
   </section>
 
   <section class="priv">
