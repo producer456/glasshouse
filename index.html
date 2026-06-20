@@ -146,12 +146,21 @@
       <strong style="color:var(--ink)">Why isn't there just a “Download” button?</strong><br>
       Unlike Android, iOS won't let you download an app file from a website and tap to install — Apple requires every app to be cryptographically <em>signed for your specific phone</em>. There are only two ways to get that signature without the App Store, so pick whichever you prefer:
       <ul style="margin:10px 0 0">
+        <li><strong>TestFlight</strong> = <em>Apple</em> signs it (one tap, no upkeep). The easiest way — just needs Apple's free TestFlight app.</li>
         <li><strong>Sideload</strong> = <em>you</em> sign it with your own Apple ID (free, but a bit of setup + a weekly refresh — that's Apple's rule for free signing, not the app).</li>
-        <li><strong>TestFlight</strong> = <em>Apple</em> signs it (one tap, no upkeep — but it requires the developer's paid account, which is why it's “coming soon”).</li>
       </ul>
     </div>
 
-    <h3>① Sideload (no TestFlight needed) — recommended</h3>
+    <h3>① TestFlight — easiest, recommended</h3>
+    <p class="lead">No computer, no refreshing — just install Apple's free <strong>TestFlight</strong> app, then tap the invite:</p>
+    <ol class="steps">
+      <li>Install <a href="https://apps.apple.com/app/testflight/id899247664" target="_blank" rel="noopener"><strong>TestFlight</strong></a> from the App Store (Apple's official beta app).</li>
+      <li>Tap the Glasshouse invite: <a id="testflight" href="https://testflight.apple.com/join/xVpeHGvA"><strong>testflight.apple.com/join/xVpeHGvA</strong></a></li>
+      <li>Tap <strong>Install</strong>, open Glasshouse, allow the permissions you're comfortable with, and tap <strong>“See what they can get on you.”</strong></li>
+    </ol>
+    <p class="note">Just submitted to Apple — the invite goes live once their quick beta review clears (usually about a day). If the link says it isn't accepting testers yet, check back soon.</p>
+
+    <h3>② Sideload (no TestFlight) — for the impatient/technical</h3>
     <p class="lead">Install it yourself with your own Apple ID, using <a href="https://sidestore.io" target="_blank" rel="noopener">SideStore</a> or <a href="https://altstore.io" target="_blank" rel="noopener">AltStore</a> (free sideloading tools):</p>
     <ol class="steps">
       <li>Set up <strong>SideStore</strong> (or AltStore) on your iPhone once — you'll need a computer for the initial setup (their site walks you through it).</li>
@@ -160,9 +169,6 @@
       <li>Open Glasshouse, allow the permissions you're comfortable with, and tap <strong>“See what they can get on you.”</strong></li>
     </ol>
     <p class="note">Heads-up: with a free Apple ID the app needs a quick <strong>refresh every 7 days</strong> in SideStore (this is Apple's limit on sideloading, not the app). SideStore can do this on-device automatically once set up.</p>
-
-    <h3>② TestFlight — easiest, in beta review</h3>
-    <p class="lead">No computer, no refreshing — just tap a link, install, done. The build is now uploaded to TestFlight; the public invite link goes live here as soon as Apple's beta review clears (usually a day or two). <a id="testflight" href="#">TestFlight invite — coming shortly.</a></p>
 
     <p class="note"><strong>Requirements (both ways):</strong> iPhone 15 Pro / 15 Pro Max or newer (16/17 Pro), iOS 26, and Apple Intelligence enabled in Settings — the AI runs on the phone's Neural Engine.</p>
   </section>
