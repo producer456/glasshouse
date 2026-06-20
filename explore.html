@@ -528,7 +528,8 @@
       ? storyState.dossier.map(function(s){ return '<div class="dseg">▸ '+s+'</div>'; }).join("")
       : '<div class="dseg dim">— empty. Make a choice and watch it fill. —</div>';
     return '<div class="dossier"><div class="dhead"><span>Your live dossier · '+storyState.dossier.length+
-      ' segment'+(storyState.dossier.length===1?'':'s')+'</span><span class="dval">≈ $'+storyState.value.toFixed(3)+'</span></div>'+rows+'</div>';
+      ' segment'+(storyState.dossier.length===1?'':'s')+'</span><span class="dval">≈ $'+storyState.value.toFixed(2)+
+      ' today · ~$'+(storyState.value*365).toFixed(0)+'/yr</span></div>'+rows+'</div>';
   }
 
   function chipHTML(list){
