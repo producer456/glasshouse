@@ -89,7 +89,7 @@
 <div class="wrap">
   <header>
     <h1>🪟 Glasshouse — Privacy Explorer</h1>
-    <p>While your TestFlight invite is on its way, see what the web already knows about you.</p>
+    <p>A live, in-browser look at what <em>any</em> website can learn about you the moment you visit — on any device (yes, including this phone), no app, no install.</p>
     <span class="badge">Runs entirely in your browser · sends nothing anywhere</span>
   </header>
 
@@ -102,12 +102,12 @@
 
   <!-- 1. Fingerprint -->
   <div class="card">
-    <h2>1 · Your browser has a fingerprint</h2>
+    <h2>1 · Your browser has a unique signature</h2>
     <p class="what">You don't need cookies to be tracked. The exact mix of your screen, fonts, GPU, timezone and
     settings is often unique enough to single you out across sites — silently. Here's yours, computed live:</p>
     <p class="eli5">🧒 <b>Like you're 5:</b> Everyone wears a different mix of hat, socks and shoes. Even with no name tag,
     people spot you just by your outfit. Your browser wears an outfit too — and websites recognise it.</p>
-    <button data-run="fp">Show me my fingerprint</button>
+    <button data-run="fp">Show me my browser signature</button>
     <div class="out" id="out-fp"></div>
   </div>
 
@@ -232,7 +232,7 @@
       profile.mem = navigator.deviceMemory||null;
       profile.screen = screen.width+"×"+screen.height;
       show("out-fp",
-        "Fingerprint signature: <b>"+sig+"</b>\n\n"+
+        "Browser signature: <b>"+sig+"</b>\n\n"+
         "built from:\n"+
         " · UA: "+esc(navigator.userAgent)+"\n"+
         " · platform: "+esc(navigator.platform||"?")+"\n"+
@@ -363,11 +363,11 @@
       body:function(p){ return "To skip making yet another password, you tap <em>Sign in with Google</em> on app after app. "+
         "Each one gets a permanent Google ID for you — and Google sees every app you use it on. Log out and you're <em>still</em> "+
         "known, by the exact signature this page already lifted off your browser:"; },
-      chips:function(p){ return [["your fingerprint", p.fp]]; },
+      chips:function(p){ return [["your browser signature", p.fp]]; },
       q:"A shiny new app says “Continue with Google — it's faster.” You:",
       a:[
         {label:"Tap it (faster)", c:function(p){ return "Linked. That app now shares one Google identity with your inbox, your maps and your search history."; }},
-        {label:"Make a fresh password", c:function(p){ return "Careful — but a new password hides your <em>name</em>, not your browser. Fingerprint <em>"+esc(p.fp)+"</em> is identical either way."; }}
+        {label:"Make a fresh password", c:function(p){ return "Careful — but a new password hides your <em>name</em>, not your browser. Your browser signature <em>"+esc(p.fp)+"</em> is identical either way."; }}
       ]
     },
     {
@@ -379,7 +379,7 @@
       q:"You want the answer. Do you:",
       a:[
         {label:"Just search it", c:function(p){ return "The query joins your profile; the wellness-shopper segment is now yours to be sold into."; }},
-        {label:"Open Incognito first", c:function(p){ return "Incognito hides the tab from your housemates, not the network. Your fingerprint <em>"+esc(p.fp)+"</em> and "+esc(p.gpu)+" are byte-for-byte the same in Incognito — the segment forms anyway."; }}
+        {label:"Open Incognito first", c:function(p){ return "Incognito hides the tab from your housemates, not the network. Your browser signature <em>"+esc(p.fp)+"</em> and "+esc(p.gpu)+" are byte-for-byte the same in Incognito — the segment forms anyway."; }}
       ]
     },
     {
@@ -426,7 +426,7 @@
   }
 
   function finaleSummary(p){
-    var chips = chipHTML([["timezone",p.tz],["GPU",p.gpu],["screen",p.scr],["fingerprint",p.fp],
+    var chips = chipHTML([["timezone",p.tz],["GPU",p.gpu],["screen",p.scr],["browser signature",p.fp],
       (p.canvas?["canvas",p.canvas]:null),(p.marker?["stored marker",p.marker]:null),
       (p.localAddr?["local address",p.localAddr]:null)]);
     var recap = storyState.moves.length
