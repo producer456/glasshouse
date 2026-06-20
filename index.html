@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Glasshouse — see what your phone reveals about you</title>
-<meta name="description" content="A privacy self-audit that shows what a data broker could infer about you — built entirely on your own phone. Nothing is ever uploaded.">
+<meta name="description" content="Learn how online tracking really works, then see what a data broker could infer about you — built entirely on your own phone. Nothing is ever uploaded.">
 <style>
   :root { --bg:#0b0c10; --card:#15171f; --line:#262a36; --ink:#eef0f4; --dim:#9aa0ad; --pink:#ff5d8f; --green:#34d399; --blue:#5b9dff; }
   * { box-sizing:border-box; }
@@ -44,23 +44,39 @@
   <header>
     <div class="badge">● Runs 100% on your phone — nothing is ever uploaded</div>
     <h1>Glasshouse</h1>
-    <p class="sub">See what a data broker could figure out about you — built entirely from what's already on your phone, by an AI that runs <em>on</em> your phone.</p>
+    <p class="sub">First learn how online tracking actually works — then see what a data broker could figure out about <em>you</em>, built entirely from what's already on your phone, by an AI that runs <em>on</em> your phone.</p>
     <!-- Replace href with the real TestFlight public link once the app is uploaded. -->
     <a class="cta" id="download" href="#install">Get Glasshouse →</a>
     <div class="note">Free · iPhone 15 Pro or newer · iOS 26 with Apple Intelligence on</div>
   </header>
 
   <section>
-    <h2>What it is</h2>
-    <p class="lead">Companies build a profile of you from scraps — where your photos were taken, what's on your calendar, who's in your contacts. Glasshouse does that <strong>to you, for you</strong>: it reads those same scraps on your phone and asks an on-device AI, “what could a data broker infer and sell about this person?” Then it shows you the answer.</p>
-    <h3>What it produces</h3>
+    <h2>Two parts: learn it, then see it</h2>
+    <p class="lead">Glasshouse walks you through it in order, so the results actually land.</p>
+
+    <h3>Part 1 — “How the web tracks you” (interactive)</h3>
+    <p class="lead">A hands-on walkthrough that runs the whole ad-tracking machine <strong>twice</strong> — once assuming your ad tracking is <strong>off</strong>, once assuming it's <strong>on</strong> — so you can see exactly what that switch does (and what it doesn't). It covers how they identify you, the split-second auction where you're sold, how it quietly steers your prices and feed, and how AI runs all of it. Every heavy idea ends with an <strong>“Explain it to me like I'm 5”</strong> note.</p>
+
+    <h3>Part 2 — “See what they could get on you”</h3>
+    <p class="lead">Then it reads the scraps on your phone — where your photos were taken, what's on your calendar, who's in your contacts — and asks an on-device AI, “what could a data broker infer about this person?” You get a polished, interactive report:</p>
     <ul>
-      <li><strong>Your profile</strong> — age band, where you likely live/work/go, job or income bracket, your social circle, habits and routines.</li>
+      <li><strong>Exposure Score</strong> — a 1–10 dial summarizing how exposed you are, and why.</li>
+      <li><strong>What they can infer</strong> — age band, where you likely live/work, job or income bracket, your social circle, habits and routines.</li>
       <li><strong>Ad-targeting buckets</strong> — the exact audience segments an ad network would file you under.</li>
-      <li><strong>How you'd be targeted</strong> — what they'd try to sell you, when, and the emotional hooks they'd use.</li>
-      <li><strong>Most exposed</strong> — the most sensitive things derivable, plus an Exposure Score (1–10).</li>
+      <li><strong>How you'd be targeted</strong> — tap to expand how a broker <em>could</em> approach you (clearly marked as possibilities, not ads you're getting).</li>
+      <li><strong>Who already has this</strong> — the apps detected on your phone, each mapped to the <em>real, named company</em> that monetizes that kind of data (Match Group, Meta, PayPal/Venmo, Chase's ad network, and the brokers who merge it all).</li>
     </ul>
-    <p class="lead">You can save the result as a PDF — on your device, your choice where it goes.</p>
+    <p class="lead">Save it as a PDF if you like — on your device, your choice where it goes.</p>
+  </section>
+
+  <section>
+    <h2>The honest part most apps skip</h2>
+    <p class="lead">Glasshouse goes out of its way <strong>not</strong> to give you false comfort:</p>
+    <ul>
+      <li><strong>Turning ad tracking off isn't “safe.”</strong> It removes the easiest key (your IDFA) — but you're still tracked by the apps you log into, by your email and phone hashed into identity graphs, and by device fingerprinting. One lock on a house with many open doors.</li>
+      <li><strong>Not seeing targeted ads isn't proof you're not targeted.</strong> The real work is invisible — the price you're quoted, the timing of a pitch, lookalike audiences, which posts surface. You can't trace it back, so it feels like nothing's happening. That's it working as designed.</li>
+      <li><strong>The profile is what could be <em>inferred</em>, not your ad feed.</strong> The ads you see are driven mostly by browsing and search this app can't read — so the two won't match, and the report says so.</li>
+    </ul>
   </section>
 
   <section class="priv">
@@ -126,8 +142,8 @@
     </ol>
     <p class="note">Heads-up: with a free Apple ID the app needs a quick <strong>refresh every 7 days</strong> in SideStore (this is Apple's limit on sideloading, not the app). SideStore can do this on-device automatically once set up.</p>
 
-    <h3>② TestFlight — easiest, coming soon</h3>
-    <p class="lead">No computer, no refreshing — just tap a link. <a id="testflight" href="#">TestFlight invite — coming soon.</a></p>
+    <h3>② TestFlight — easiest, in beta review</h3>
+    <p class="lead">No computer, no refreshing — just tap a link, install, done. The build is now uploaded to TestFlight; the public invite link goes live here as soon as Apple's beta review clears (usually a day or two). <a id="testflight" href="#">TestFlight invite — coming shortly.</a></p>
 
     <p class="note"><strong>Requirements (both ways):</strong> iPhone 15 Pro / 15 Pro Max or newer (16/17 Pro), iOS 26, and Apple Intelligence enabled in Settings — the AI runs on the phone's Neural Engine.</p>
   </section>
